@@ -4,14 +4,19 @@ inquirer = require 'inquirer'
 Steam = require 'steam'
 
 POSSIBLE_GAMES = [
+  {name: 'R6S', value: '359550', checked: true}
   {name: 'CS GO', value: '730', checked: true}
   {name: 'CS 1.6', value: '10', checked: true}
   {name: 'CS Source', value: '240', checked: true}
-  {name: 'Dota 2', value: '570', checked: true}
-  {name: 'RUST', value: '252490', checked: true}
   {name: 'HL', value: '70', checked: true}
-  {name: 'Lifeisstrange', value: '319630', checked: true}
-  {name: 'Blood and Bacon', value: '434570', checked: true}
+  {name: 'RUST', value: '252490', checked: true}
+  {name: 'Dirt3', value: '321040', checked: true}
+  {name: 'Rocket League', value: '252950', checked: true}
+  {name: 'Forest', value: '242760', checked: true}
+  {name: 'Dota 2', value: '570', checked: true}
+  {name: 'CS:CZ DS', value: '100', checked: true}
+  {name: 'CS:CZ', value: '80', checked: true}
+  {name: 'LIS', value: '319630', checked: true}
   {name: 'EAC', value: '282660', checked: true}
   {name: 'Alien Swarm', value: '630', checked: true}
   {name: 'Evolve Stage 2', value: '273350', checked: true}
@@ -19,8 +24,6 @@ POSSIBLE_GAMES = [
   {name: 'Bell Ringer', value: '424830', checked: true}
   {name: 'Limbo', value: '48000', checked: true}
   {name: 'TF2', value: '440', checked: true}
-  {name: 'CS:CZ DS', value: '100', checked: true}
-  {name: 'CS:CZ', value: '80', checked: true}
   {name: 'Cry of Fear', value: '223710', checked: true}
   {name: 'Loadout', value: '208090', checked: true}
   {name: 'Unturned', value: '304930', checked: true}
