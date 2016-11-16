@@ -14,6 +14,9 @@ POSSIBLE_GAMES = [
   {name: 'Rocket League', value: '252950', checked: true}
   {name: 'Forest', value: '242760', checked: true}
   {name: 'Dota 2', value: '570', checked: true}
+  {name: 'War Thunder', value: '236390', checked: true}
+  {name: 'ARK: Survival Evolved', value: '346110', checked: true}
+  {name: 'Paladins', value: '444090', checked: true}444090
   {name: 'CS:CZ DS', value: '100', checked: true}
   {name: 'CS:CZ', value: '80', checked: true}
   {name: 'LIS', value: '319630', checked: true}
@@ -54,7 +57,7 @@ class SteamAccount
     @shaSentryfile = sentryHash.toString('base64')
 
   onLogin: =>
-    console.log(chalk.green.bold('✔ ') + chalk.white("Sucessfully logged into '#{@accountName}'"))
+    console.log(chalk.green.bold('✔ ') + chalk.white("Sikeres bejelentkezés! '#{@accountName}'"))
     setTimeout =>
       database.push {@accountName, @password, @games, @shaSentryfile}
       jf.writeFileSync('db.json', database)
@@ -63,11 +66,11 @@ class SteamAccount
 
   onError: (e) =>
     if e.eresult == Steam.EResult.InvalidPassword
-      console.log(chalk.bold.red("X ") + chalk.white("Logon failed for account '#{@accountName}' - invalid password"))
+      console.log(chalk.bold.red("X ") + chalk.white("Logon failed for account '#{@accountName}' - rossz jelszó"))
     else if e.eresult == Steam.EResult.AlreadyLoggedInElsewhere
       console.log(chalk.bold.red("X ") + chalk.white("Logon failed for account '#{@accountName}' - already logged in elsewhere"))
     else if e.eresult == Steam.EResult.AccountLogonDenied
-      query = {type: 'input', name: 'steamguard', message: 'Please enter steamguard code: '}
+      query = {type: 'input', name: 'steamguard', message: 'Ird be a guard kodot! : '}
       inquirer.prompt query, ({steamguard}) =>
         @testLogin(steamguard)
 
@@ -78,9 +81,9 @@ catch e
   database = []
 
 query = [
-  {type: 'input', name: 'u_name', message: 'Enter login name: '}
-  {type: 'password', name: 'u_password', message: 'Enter password: '}
-  {type: 'checkbox', name: 'u_games', message: 'Please select games to be boosted: ', choices: POSSIBLE_GAMES}
+  {type: 'input', name: 'u_name', message: 'Felhasználónév: '}
+  {type: 'password', name: 'u_password', message: 'Jelszó: '}
+  {type: 'checkbox', name: 'u_games', message: 'Valaszd ki a jatekot amiben boostoljam az órákat: ', choices: POSSIBLE_GAMES}
 ]
 
 inquirer.prompt query, (answers) ->
