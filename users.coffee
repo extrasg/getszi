@@ -17,7 +17,7 @@ POSSIBLE_GAMES = [
   {name: 'Dota 2', value: '570', checked: true}
   {name: 'War Thunder', value: '236390', checked: true}
   {name: 'ARK: Survival Evolved', value: '346110', checked: true}
-  {name: 'Paladins', value: '444090', checked: true}444090
+  {name: 'Paladins', value: '444090', checked: true}
   {name: 'CS:CZ', value: '80', checked: true}
   {name: 'LIS', value: '319630', checked: true}
   {name: 'EAC', value: '282660', checked: true}
