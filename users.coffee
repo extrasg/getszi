@@ -4,10 +4,11 @@ inquirer = require 'inquirer'
 Steam = require 'steam'
 
 POSSIBLE_GAMES = [
-  {name: 'R6S', value: '359550', checked: true}
+  {name: 'GTA V', value: '271590', checked: true}
   {name: 'CS GO', value: '730', checked: true}
   {name: 'CS 1.6', value: '10', checked: true}
   {name: 'CS Source', value: '240', checked: true}
+  {name: 'R6S', value: '359550', checked: true}
   {name: 'HL', value: '70', checked: true}
   {name: 'RUST', value: '252490', checked: true}
   {name: 'Dirt3', value: '321040', checked: true}
@@ -17,7 +18,6 @@ POSSIBLE_GAMES = [
   {name: 'War Thunder', value: '236390', checked: true}
   {name: 'ARK: Survival Evolved', value: '346110', checked: true}
   {name: 'Paladins', value: '444090', checked: true}444090
-  {name: 'CS:CZ DS', value: '100', checked: true}
   {name: 'CS:CZ', value: '80', checked: true}
   {name: 'LIS', value: '319630', checked: true}
   {name: 'EAC', value: '282660', checked: true}
@@ -30,6 +30,13 @@ POSSIBLE_GAMES = [
   {name: 'Cry of Fear', value: '223710', checked: true}
   {name: 'Loadout', value: '208090', checked: true}
   {name: 'Unturned', value: '304930', checked: true}
+  {name: 'Dead BY Daylight', value: '381210', checked: true}
+  {name: 'H1Z1', value: '433850', checked: true}
+  {name: 'ARK: Survival Of The Fittest', value: '407530', checked: true}
+  {name: 'PayDay2', value: '218620', checked: true}
+  {name: 'MK:X', value: '307780', checked: true}
+  {name: 'Middle-earth: Shadow of Mordor', value: '241930', checked: true}
+  {name: 'BF2', value: '24960', checked: true}
 ]
 account = null
 
@@ -68,9 +75,9 @@ class SteamAccount
     if e.eresult == Steam.EResult.InvalidPassword
       console.log(chalk.bold.red("X ") + chalk.white("Logon failed for account '#{@accountName}' - rossz jelszó"))
     else if e.eresult == Steam.EResult.AlreadyLoggedInElsewhere
-      console.log(chalk.bold.red("X ") + chalk.white("Logon failed for account '#{@accountName}' - already logged in elsewhere"))
+      console.log(chalk.bold.red("X ") + chalk.white("Logon failed for account '#{@accountName}' - már bevagy jelentkezve"))
     else if e.eresult == Steam.EResult.AccountLogonDenied
-      query = {type: 'input', name: 'steamguard', message: 'Ird be a guard kodot! : '}
+      query = {type: 'input', name: 'steamguard', message: 'ÍRD BE A GUARD KÓDÓT : '}
       inquirer.prompt query, ({steamguard}) =>
         @testLogin(steamguard)
 
@@ -83,7 +90,7 @@ catch e
 query = [
   {type: 'input', name: 'u_name', message: 'Felhasználónév: '}
   {type: 'password', name: 'u_password', message: 'Jelszó: '}
-  {type: 'checkbox', name: 'u_games', message: 'Valaszd ki a jatekot amiben boostoljam az órákat: ', choices: POSSIBLE_GAMES}
+  {type: 'checkbox', name: 'u_games', message: 'Válaszd ki a játékot amiben boostoljam az órákat: ', choices: POSSIBLE_GAMES}
 ]
 
 inquirer.prompt query, (answers) ->
